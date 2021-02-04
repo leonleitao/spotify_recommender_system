@@ -130,3 +130,9 @@ dmypy.json
 
 # Environment
 spotify_env
+
+# Visual studio
+.vscode
+
+# CSV
+*.csv
