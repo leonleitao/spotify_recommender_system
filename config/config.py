@@ -31,4 +31,3 @@ COLUMNS_TO_DROP = [
 
 # Column that needs to be converted from a string to a list
 STRING_COLUMN_TO_LIST = 'artists'
-
