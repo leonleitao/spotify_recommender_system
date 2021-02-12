@@ -12,7 +12,7 @@ NUM_TRACKS = 5
 class User:
     def __init__(self,token):
         self.token = token
-        self.features = pd.read_csv('../data/data_preprocessed.csv')
+        self.features = pd.read_csv('data/data_preprocessed.csv')
         self.saved_tracks = None
         self.recommended_tracks = None
         self.user_id = None
