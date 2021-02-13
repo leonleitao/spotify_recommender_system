@@ -1,8 +1,9 @@
 import requests
 import random
+import json
+
 import pandas as pd
 import numpy as np
-import json
 from sklearn.metrics.pairwise import cosine_similarity
 
 TRACK_URI = "https://api.spotify.com/v1/me/tracks?offset=0&limit=30"
