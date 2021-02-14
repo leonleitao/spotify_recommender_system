@@ -43,6 +43,7 @@ AUTH_QUERY_PARAMETERS = {
 TOP_N = 15
 PLAYLIST_NUM_TRACKS = 10
 
+
 # APP CONFIGS
 class Config:
     DEBUG = False
@@ -51,14 +52,17 @@ class Config:
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SERVER_PORT = 5000
 
+
 class ProductionConfig(Config):
     DEBUG = False
     SERVER_ADDRESS: os.environ.get('SERVER_ADDRESS', '0.0.0.0')
     SERVER_PORT: os.environ.get('SERVER_PORT', '5000')
 
+
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+
 
 class TestingConfig(Config):
     TESTING = True
