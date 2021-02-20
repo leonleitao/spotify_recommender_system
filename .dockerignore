@@ -1,0 +1,12 @@
+jupyter_notebooks*
+*/env*
+*/venv*
+*.env
+*.log
+.git
+.gitignore
+.vscode
+.cache
+*__pycache__
+notebooks/
+spotify_env

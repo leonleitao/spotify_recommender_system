@@ -35,7 +35,7 @@ AUTH_QUERY_PARAMETERS = {
     "redirect_uri": REDIRECT_URI,
     "scope": SCOPE,
     # "state": STATE,
-    # "show_dialog": SHOW_DIALOG_str,
+    "show_dialog": SHOW_DIALOG_str,
     "client_id": CLIENT_ID
 }
 
@@ -56,7 +56,7 @@ class Config:
 class ProductionConfig(Config):
     DEBUG = False
     SERVER_ADDRESS: os.environ.get('SERVER_ADDRESS', '0.0.0.0')
-    SERVER_PORT: os.environ.get('SERVER_PORT', '5000')
+    SERVER_PORT = os.environ.get('SERVER_PORT', '5000')
 
 
 class DevelopmentConfig(Config):
