@@ -61,7 +61,7 @@ def callback():
     # Add token, tracks and user id to sessions object
     session['access_token'] = access_token
     session['user_id'] = user_id
-    return redirect(url_for('views.recommendations'))
+    return redirect(url_for('views.recommendations', _external=True, _scheme="https"))
 
 
 @view.route("/recommendations")
@@ -90,3 +90,4 @@ def add_playlist():
     res = add_playlist_tracks(playlist_id, session['track_ids'], session['access_token'])
     message = f'Added playlist {name} to your Spotify account.'
     return jsonify({'message': message, 'url': url})
+

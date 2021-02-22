@@ -22,9 +22,8 @@ USER_URL = "https://api.spotify.com/v1/me"
 TRACKS_URL = "https://api.spotify.com/v1/tracks"
 
 # SERVER SIDE PARAMETERS
-CLIENT_SIDE_URL = "http://127.0.0.1"
 PORT = 5000
-REDIRECT_URI = "{}:{}/callback/q".format(CLIENT_SIDE_URL, PORT)
+REDIRECT_URI = os.environ['REDIRECT_URI']
 SCOPE = "user-library-read playlist-modify-public playlist-modify-private"
 STATE = ""
 SHOW_DIALOG_bool = True
@@ -49,7 +48,7 @@ class Config:
     DEBUG = False
     TESTING = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'this-really-needs-to-be-changed'
+    SECRET_KEY = os.urandom(16)
     SERVER_PORT = 5000
 
 
