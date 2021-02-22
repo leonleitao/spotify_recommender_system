@@ -2,7 +2,7 @@
 
 A web application that recommends new songs to users based on their Spotify listening history. It also allows you to create & add a playlist of the recommended songs to your Spotify account.
 
-Try it out <a href="spotifyrecommendersystem.herokuapp.com">here</a>
+Try it out <a href="https://spotifyrecommendersystem.herokuapp.com/">here</a>
 
 ## Data Sources
 
