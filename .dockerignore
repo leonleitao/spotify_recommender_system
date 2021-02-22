@@ -3,6 +3,7 @@ jupyter_notebooks*
 */venv*
 *.env
 *.log
+*.md
 .git
 .gitignore
 .vscode
