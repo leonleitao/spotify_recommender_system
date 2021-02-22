@@ -48,5 +48,6 @@ jobs:
       env:
         HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       run: |
-        heroku container:push web --app $HEROKU_APP_NAME
+        docker build -t registry.heroku.com/$(NAME)/web:latest .
+        docker push registry.heroku.com/${HEROKU_APP_NAME}/web:latest
         heroku container:release web --app $HEROKU_APP_NAME
