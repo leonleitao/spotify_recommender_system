@@ -2,7 +2,33 @@ import pandas as pd
 import ast 
 from sklearn.preprocessing import MinMaxScaler
 
-from config import config
+from app.config import DATASET_DIR,DATASET_RAW_NAME,DATASET_PREPROCESSED_NAME
+
+# Since we use cosine similarity to recommend tracks all the features should have the same scale (0-1)
+# List of numerical columns to scale using MinMaxscaler from sklearn
+COLUMNS_TO_SCALE = [
+    'acousticness', 
+    'danceability', 
+    'duration_ms', 
+    'energy',
+    'instrumentalness', 
+    'key', 
+    'liveness', 
+    'loudness',
+    'popularity', 
+    'speechiness', 
+    'tempo',
+    'valence', 
+    'year'
+]
+
+# List of columns that are irrelevant and need to be dropped
+COLUMNS_TO_DROP = [
+    'release_date'
+]
+
+# Column that needs to be converted from a string to a list
+STRING_COLUMN_TO_LIST = 'artists'
 
 def convert_string_to_list(df,column):
     '''Converts a string representation of a list to a python list'''
@@ -31,12 +57,12 @@ def drop_columns(df,columns_to_drop):
 
 if __name__=='__main__':
     # Data import
-    features = pd.read_csv(config.DATASET_DIR / config.DATASET_RAW)
+    features = pd.read_csv(DATASET_DIR / DATASET_RAW_NAME)
     # Convert the artists column from string to list
-    features = convert_string_to_list(features, config.STRING_COLUMN_TO_LIST)
+    features = convert_string_to_list(features, STRING_COLUMN_TO_LIST)
     # Scale numerical columns
-    features = scale_columns(features, config.COLUMNS_TO_SCALE)
+    features = scale_columns(features, COLUMNS_TO_SCALE)
     # Drop irrelevant columns
-    features = drop_columns(features, config.COLUMNS_TO_DROP)
+    features = drop_columns(features, COLUMNS_TO_DROP)
     # Save the preprocessed data
-    features.to_csv(config.DATASET_DIR / config.DATASET_PREPROCESSED_NAME, index=False)
+    features.to_csv(DATASET_DIR / DATASET_PREPROCESSED_NAME, index=False)

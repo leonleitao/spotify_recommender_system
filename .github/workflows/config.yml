@@ -13,7 +13,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
@@ -32,21 +40,12 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Download and preprocess data
-      env:
-            KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-            KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       run: |
         bash scripts/download_data.sh
-    - name: Heroku setup
-      env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+    - name: Build and release docker image
       run: |
         docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
         wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-    - name: Build and release docker image
-      env:
-        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-      run: |
-        heroku container:push web --app $HEROKU_APP_NAME
+        docker build -t registry.heroku.com/$HEROKU_APP_NAME/web:latest .
+        docker push registry.heroku.com/$HEROKU_APP_NAME/web:latest
         heroku container:release web --app $HEROKU_APP_NAME
