@@ -18,7 +18,7 @@ Try it out <a href="spotifyrecommendersystem.herokuapp.com">here</a>
 
 ## Acknowledgments
 1. Spotify Authorization Flow: <a href="https://github.com/drshrey/spotify-flask-auth-example">https://github.com/drshrey/spotify-flask-auth-example</a>
-2. Ajax Forms with jQuery & Flask<a href="https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask">https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask</a>
+2. Ajax Forms with jQuery & Flask: <a href="https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask">https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask</a>
 3. Background image: <a href="https://i.pinimg.com/originals/9c/be/db/9cbedb919772c0519b8b63d2ddef27b7.jpg">https://i.pinimg.com/originals/9c/be/db/9cbedb919772c0519b8b63d2ddef27b7.jpg</a>
 4. Browser icon image: <a href="https://www.flaticon.com/free-icon/music-headphones_3863904?term=music&page=2&position=16&page=2&position=16&related_id=3863904&origin=search">https://www.flaticon.com/free-icon/music-headphones_3863904?term=music&page=2&position=16&page=2&position=16&related_id=3863904&origin=search</a>
 
